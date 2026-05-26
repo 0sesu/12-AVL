@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{0fc8e111-5d35-49e9-a375-72d00666cbb4}</ProjectGuid>
-    <RootNamespace>ArvoreRemocao</RootNamespace>
+    <RootNamespace>AVL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>AVL</ProjectName>
   </PropertyGroup>

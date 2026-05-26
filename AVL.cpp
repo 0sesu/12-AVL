@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#include <cstdlib>
+#include <iostream>
 using namespace std;
 
 /* -----------------------------------------------------------
@@ -27,6 +28,7 @@ void buscar();
 NO* insereArvore(NO* no, int valor);
 NO* criaNO(int valor);
 int   elementosArvore(NO* no);
+void  liberarArvore(NO* no);
 void  exibirElementosArvore(NO* no, int espaco, bool direita);
 void  buscarElementoArvore(NO* no, int valor);
 
@@ -73,14 +75,23 @@ void menu() {
                    case 5:
                        buscar();
                        break;
+                   case 6:
+                       break;
+                   default:
+                       cout << "Opcao invalida! Escolha uma opcao de 1 a 6.\n";
+                       break;
                }
 
 		cout << endl; 
         if (op != 6) system("pause"); // Aguarda tecla (Windows)
     }
+
+    liberarArvore(raiz);
+    raiz = NULL;
 }
 
 void inicializar() {
+    liberarArvore(raiz);
     raiz = NULL;
     cout << "Arvore inicializada!\n";
 }
@@ -102,7 +113,8 @@ void exibir() {
         cout << "Arvore vazia!\n";
         return;
     }
-    cout << "\n===== Estrutura da Arvore (raiz no topo) =====\n\n";
+    cout << "\n===== Estrutura da Arvore (raiz no topo) =====\n";
+    cout << "Cada no mostra: valor (h=altura, FB=fator de balanceamento)\n\n";
     exibirElementosArvore(raiz, 0, false);
 }
 
@@ -233,6 +245,14 @@ int elementosArvore(NO* no) {
     return 1 + elementosArvore(no->esq) + elementosArvore(no->dir);
 }
 
+void liberarArvore(NO* no) {
+    if (no == NULL) return;
+
+    liberarArvore(no->esq);
+    liberarArvore(no->dir);
+    free(no);
+}
+
 void exibirElementosArvore(NO* no, int espaco, bool direita) {
     /* Impressão recursiva “deitada”:
        └── valor
@@ -256,7 +276,9 @@ void exibirElementosArvore(NO* no, int espaco, bool direita) {
     else
         cout << "\\-- ";
 
-    cout << no->valor << endl;
+    cout << no->valor
+        << " (h=" << alturaNo(no)
+        << ", FB=" << fatorBalanceamento(no) << ")" << endl;
 
     // Exibe subárvore esquerda
     exibirElementosArvore(no->esq, espaco, false);
