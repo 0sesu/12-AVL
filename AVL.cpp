@@ -173,7 +173,7 @@ NO* girarDireita(NO* y) {
    // Passo 5: Retorne o novo nó raiz ('x').
 
 	// provisoriamente retorna o ponteiro passado como parâmetro
-	return y; 
+	return x; 
 }  
 
 NO* girarEsquerda(NO* x) {  
@@ -198,7 +198,7 @@ NO* girarEsquerda(NO* x) {
 
 
     // provisoriamente retorna o ponteiro passado como parâmetro
-    return x; 
+    return y; 
 }
 
 NO* insereArvore(NO* no, int valor) {
