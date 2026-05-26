@@ -169,7 +169,7 @@ NO* girarDireita(NO* y) {
    x->dir = y;
    // Passo 4: Recalcule as alturas dos nós afetados.
    y->altura = maior(alturaNo(y->esq), alturaNo(y->dir)) + 1;
-   x->altura = maior(alturaNo(x->dir), alturaNo(x->esq)) + 1;
+   x->altura = maior(alturaNo(x->esq), alturaNo(x->dir)) + 1;
    // Passo 5: Retorne o novo nó raiz ('x').
 
 	// provisoriamente retorna o ponteiro passado como parâmetro
@@ -193,7 +193,7 @@ NO* girarEsquerda(NO* x) {
    y->esq = x;
    // Passo 4: Recalcule as alturas dos nós afetados.
    x->altura = maior(alturaNo(x->esq), alturaNo(x->dir)) + 1;
-   y->altura = maior(alturaNo(y->dir), alturaNo(y->esq)) + 1;
+   y->altura = maior(alturaNo(y->esq), alturaNo(y->dir)) + 1;
    // Passo 5: Retorne o novo nó raiz ('y').
 
 
